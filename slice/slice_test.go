@@ -30,12 +30,12 @@ func TestSlice_DelItem(t *testing.T) {
 	}
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
-			l := make([]interface{}, 0, tc.originCap)
+			l := make([]int, 0, tc.originCap)
 
 			for i := 0; i < tc.enqueueLoop; i++ {
 				l = append(l, i)
 			}
-			l = shrink(l)
+			l = shrink[int](l)
 			t.Log(tc.expectCap, cap(l))
 		})
 	}
